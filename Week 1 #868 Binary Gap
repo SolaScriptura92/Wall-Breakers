@@ -1,0 +1,35 @@
+class Solution {
+public:
+    int binaryGap(int N) 
+    {
+        string n = bitset<32>(N).to_string(); //convert to bit strings
+        bool firstOneBit = false; //keep track of when you found the first bit
+        int indexOne; //keep track of the last one bit seen
+        int maxDistance = -1;
+        
+        for(int i = 0; i < n.length(); i++)
+        {
+            if(firstOneBit == false && n[i] == '1') //first 1 bit seen
+            {
+                firstOneBit = true;
+                indexOne = i;
+            }
+            
+            else if(firstOneBit == true && n[i] == '1')
+            {
+                if(i - indexOne > maxDistance)
+                {
+                    maxDistance = i - indexOne;
+                }
+                
+                indexOne = i;
+            }
+        }
+        
+        if(maxDistance == -1) //if no two consecutive bit where found, it will still be -1
+            return 0;
+        
+        else
+            return maxDistance;
+    }
+};
