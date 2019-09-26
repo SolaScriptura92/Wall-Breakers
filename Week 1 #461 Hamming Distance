@@ -1,0 +1,19 @@
+class Solution {
+public:
+    int hammingDistance(int x, int y) 
+    {
+        int count = 0; //keep track of differences in bits
+        
+        for(int i = 0; i <= 31; i++) //go through the 32 bits in each number
+        {
+            //the if statement compares the bits and adds to count
+            //whenever the corresponding bits differ.
+            
+            if( ((x >> i) & 1) ^ ((y >> i) & 1) ) // and (& with 1) to get single bit
+                count++;
+        }
+        
+        return count;
+        
+    }
+};
