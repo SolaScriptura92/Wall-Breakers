@@ -1,0 +1,50 @@
+class Solution {
+public:
+    string reverseVowels(string s) 
+    {
+        int leftSwapIndex;
+        int rightSwapIndex;
+        
+        bool leftFound = false;
+        bool rightFound = false;
+        char temp;
+        
+        int left = 0;
+        int right = s.length() - 1;
+        
+        while(left < right)
+        {
+            if(!leftFound && strchr("aeiouAEIOU", s[left]))
+            {
+                leftSwapIndex = left;
+                leftFound = true;
+            }
+            
+            if(!rightFound && strchr("aeiouAEIOU", s[right]))
+            {
+                rightSwapIndex = right;
+                rightFound = true;
+            }
+            
+            if(leftFound && rightFound)
+            {
+                leftFound = false;
+                rightFound = false;
+                left++;
+                right--;
+                
+                temp = s[leftSwapIndex];
+                s[leftSwapIndex] = s[rightSwapIndex];
+                s[rightSwapIndex] = temp;   
+            }
+            
+            if(!strchr("aeiouAEIOU", s[right]))
+                right--;
+            
+            if(!strchr("aeiouAEIOU", s[left]))
+                left++;
+        }
+        
+        return s;
+    }
+};
