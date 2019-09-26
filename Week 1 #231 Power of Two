@@ -1,0 +1,28 @@
+class Solution {
+public:
+    bool isPowerOfTwo(int n) 
+    {
+        int exp = -1;
+        int num = 0;
+        
+        if(n % 2 != 0 && n > 2) //takes care of odd numbers > 3
+            return false;
+        
+        else
+        {
+            while(n > 64 && n % 2 == 0)
+                n = n / 2;
+        }
+        
+        while(num <= n)
+        {
+            exp += 1;
+            num = pow(2, exp);
+            
+            if(num == n)
+              return true;
+        }
+        
+        return false;
+    }
+};
