@@ -1,0 +1,25 @@
+class Solution {
+public:
+    vector<int> sortArrayByParity(vector<int>& A) 
+    {
+        deque<int> myDeque;
+        vector<int> ordered;
+        
+        for(int i = 0; i < A.size(); i++)
+        {
+            if(A[i] % 2 == 0) //if even
+                myDeque.push_front(A[i]);
+            
+            else
+                myDeque.push_back(A[i]);
+        }
+        
+        while(!myDeque.empty())
+        {
+            ordered.push_back(myDeque.front());
+            myDeque.pop_front();
+        }
+        
+        return ordered;
+    }
+};
