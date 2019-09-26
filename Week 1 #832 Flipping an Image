@@ -1,0 +1,38 @@
+class Solution {
+public:
+    vector<vector<int>> flipAndInvertImage(vector<vector<int>>& A) 
+    {
+        
+        int l, r, temp;
+        
+        for(int i = 0; i < A.size(); i++) //go through each row
+        {
+            l = 0;
+            r = A[i].size() - 1;
+            
+            
+            while(l <= r)
+            {
+                temp = A[i][l];
+                
+                if(A[i][r] == 1)
+                    A[i][l] = 0;
+                
+                else
+                    A[i][l] = 1;
+                
+                if(temp == 1)
+                    A[i][r] = 0;
+                
+                else
+                    A[i][r] = 1;
+                
+                l++;
+                r--;
+                
+            } 
+        }
+        
+        return A;
+    }
+};
