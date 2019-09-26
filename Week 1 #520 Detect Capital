@@ -1,0 +1,27 @@
+class Solution {
+public:
+    bool detectCapitalUse(string word) 
+    {
+        bool firstCondition = true;
+        bool secondCondition = true;
+        bool thirdCondition = true;
+        
+        if(!isupper(word[0]))
+            thirdCondition = false;
+        
+        
+        for(int i = 0; i < word.length(); i++)
+        {
+            if(islower(word[i]))
+                firstCondition = false;
+            
+            if(isupper(word[i]))
+                secondCondition = false;
+            
+            if(i != 0 && isupper(word[i]))
+                thirdCondition = false; 
+        }
+        
+        return (firstCondition || secondCondition || thirdCondition);
+    }
+};
