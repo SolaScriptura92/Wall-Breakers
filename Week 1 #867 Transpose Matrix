@@ -1,0 +1,21 @@
+class Solution {
+public:
+    vector<vector<int>> transpose(vector<vector<int>>& A) 
+    {
+        /*the line below creates a 2D vector with its number of rows equal to the number of columns of the 2D vector A and its number of columns equal to the number of rows in A (filled with zeros)*/
+        vector<vector<int>> transposedMatrix(A[0].size(), vector<int>(A.size(), 0));
+        
+        
+        //now go through each row of 2D vector A starting with the top row, left to right
+        for(int i = 0; i < A.size(); i++)
+        {
+            for(int j = 0; j < A[i].size(); j++)
+            {
+                transposedMatrix[j][i] = A[i][j];
+            }
+        }
+        
+        return transposedMatrix;
+        
+    }
+};
