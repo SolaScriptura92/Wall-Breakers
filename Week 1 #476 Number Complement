@@ -1,0 +1,31 @@
+class Solution {
+public:
+    int findComplement(int num) 
+    {
+        string n = bitset<32>(num).to_string(); //convert the num to its equivalent bit string
+        int start = 0; //index where will begin to take bits into account
+        vector<int> powers; //keep track of bits that will be turned to '1' after flipping
+        int complement = 0; //final number after bits are flipped
+            
+        while(start < n.length() && n[start] != '1') //skip all leading zeros
+        {
+            start++;
+        }
+        
+        while(start < n.length()) //begin with the most significant bit to the end
+        {
+            if(n[start] == '0') //then this current start position will be flipped on
+                powers.push_back(n.length() - start - 1); //store the power postion the index represents
+            
+            start++;
+        }
+        
+        for(int i = 0; i < powers.size(); i++)
+        {
+            complement += pow(2, powers[i]);
+        }
+        
+        return complement;
+            
+    }
+};
