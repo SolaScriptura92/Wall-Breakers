@@ -1,0 +1,25 @@
+class Solution {
+public:
+    vector<string> fizzBuzz(int n) 
+    {
+    
+        vector<string> returnVect;
+        
+        for(int x = 1; x <= n; x++)
+        {
+            if(x % 5 == 0 && x % 3 == 0)
+                 returnVect.push_back("FizzBuzz");
+            
+            else if(x % 5 == 0)
+                returnVect.push_back("Buzz");
+            
+            else if (x % 3 == 0)
+                returnVect.push_back("Fizz");
+            
+            else
+                returnVect.push_back(to_string(x));
+        }
+        
+        return returnVect;
+    }
+};
