@@ -1,0 +1,36 @@
+class Solution {
+public:
+    bool isPalindrome(string s) 
+    {
+        string newString = "";
+        int l = 0;
+        int r;
+        
+        for(int i = 0; i < s.length(); i++)
+        {
+            if(isalnum(s[i]))
+            {
+                if(isalpha(s[i]))
+                    newString += tolower(s[i]);
+                
+                else
+                    newString += tolower(s[i]);
+                    
+            }
+                
+        }
+        
+        r = newString.length() - 1;
+        
+        while(l < r)
+        {
+            if(newString[l] != newString[r])
+                return false;
+            
+            l++;
+            r--;
+        }
+        
+        return true;
+    }
+};
