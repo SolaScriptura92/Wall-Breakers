@@ -1,0 +1,28 @@
+class Solution {
+public:
+    bool isAnagram(string s, string t) 
+    {
+        
+        int arrS[26] = {0};
+        int arrT[26] = {0};
+        
+        for(int i = 0; i < s.length(); i++)
+        {
+            arrS[int(s[i]) - 97]++;
+        }
+        
+        for(int i = 0; i < t.length(); i++)
+        {
+            arrT[int(t[i]) - 97]++;
+        }
+        
+        for(int i = 0; i < 26; i++)
+        {
+            if(arrS[i] != arrT[i])
+                return false;
+        }
+        
+        return true;
+
+    }
+};
