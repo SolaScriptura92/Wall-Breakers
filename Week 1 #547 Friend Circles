@@ -1,0 +1,88 @@
+class UF
+{
+
+private:
+    int num = 0;
+    vector<int> subsets;
+    
+    
+public:  
+    
+    UF(int n)
+    {
+        num = n;
+        
+        for(int i = 0; i < n; i++)
+        {
+            subsets.push_back(i);
+        }
+    }
+    
+    void unite(int a, int b)
+    {
+        if(find(a) == find(b))
+        {
+            return;
+        }
+        
+        else
+        {
+            int temp = find(a);
+            
+            for(int i = 0; i < subsets.size(); i++)
+            {
+                if(subsets[i] == temp)
+                    subsets[i] = find(b);
+            }
+            
+            num--;
+            return;
+        }
+    }
+    
+    bool connected(int a, int b)
+    {
+        return find(a) == find(b);
+    }
+    
+    
+    int find(int a)
+    {
+        return subsets[a];
+    }
+    
+    int count()
+    {
+        return num;
+    }
+};
+
+
+class Solution 
+{
+public:
+    int findCircleNum(vector<vector<int>>& M) 
+    {
+        if(M.size() == 0 || M[0].size() == 0) //edge case
+            return 0;
+        
+        else
+        {
+            UF myUF(M.size());
+            //cout << myUF.count() << endl;
+            for(int i = 0; i < M.size(); i++)
+            {
+                for(int j = i + 1; j < M.size(); j++)
+                {
+                    if(M[i][j] == 1)
+                    {
+                        myUF.unite(j, i);
+                    }
+                }
+            }
+            
+            return myUF.count();
+        }
+        
+    }
+};
